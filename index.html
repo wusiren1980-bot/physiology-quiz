@@ -1,0 +1,699 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>生理學期中考｜50題互動題庫</title><style>
+:root{font-family:system-ui,-apple-system,'Noto Sans TC',sans-serif;color:#203047;background:#f4f7fb}*{box-sizing:border-box}body{margin:0}.wrap{max-width:830px;margin:auto;padding:20px 14px 80px}header{background:#15345b;color:white;padding:25px 22px;border-radius:18px;margin-bottom:18px}h1{font-size:24px;margin:0 0 8px}header p{margin:0;color:#d5e6fa}.panel{background:white;border:1px solid #e2e9f3;border-radius:16px;padding:18px;margin:12px 0;box-shadow:0 2px 9px #15345b0b}label{display:block;font-size:13px;color:#516174;font-weight:700;margin:8px 0}select,button{font:inherit}select{width:100%;border:1px solid #b9c8db;border-radius:9px;padding:11px;background:white;color:#1b324d}button{border:1px solid #b5c9df;background:white;color:#15345b;border-radius:10px;padding:11px 14px;cursor:pointer;font-weight:650}button.primary{background:#145d9c;border-color:#145d9c;color:white}button:disabled{opacity:.4;cursor:default}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.muted{color:#6d7d90;font-size:13px}.question{font-size:19px;line-height:1.75;font-weight:650;margin:14px 0}.opt{display:block;width:100%;text-align:left;margin:9px 0;padding:13px 15px;line-height:1.5;border-radius:12px}.opt.chosen{border-color:#145d9c;background:#eaf3ff}.opt.good{background:#e6f6e9;border-color:#389b5c}.opt.bad{background:#ffebeb;border-color:#d65b5b}.answer{background:#f0f7ff;border-left:4px solid #3478b7;padding:15px;border-radius:10px;margin-top:16px;line-height:1.75;white-space:pre-wrap}.pill{display:inline-block;background:#e9eff8;color:#355473;border-radius:30px;padding:5px 10px;font-size:12px}.hidden{display:none}.stat{font-size:13px;color:#4d657e}footer{font-size:12px;color:#6d7d90;line-height:1.7;margin:20px 4px}@media(max-width:500px){.grid{grid-template-columns:1fr}h1{font-size:21px}.wrap{padding:10px 9px 55px}}
+</style></head><body><div class="wrap"><header><h1>生理學期中考｜互動題庫</h1><p>50題・分單元／綜合・選擇題／口頭自答・原答案與PPT頁碼</p></header>
+<div class="panel"><div class="grid"><div><label>練習範圍</label><select id="unit"><option value="all">綜合練習（全部單元）</option><option value="7">第7單元｜神經系統</option><option value="8">第8單元｜中樞神經系統</option><option value="9">第9單元｜自主神經系統</option><option value="10">第10單元｜感覺生理學</option><option value="11">第11單元｜內分泌腺</option></select></div><div><label>練習模式</label><select id="mode"><option value="mc">四選一選擇題</option><option value="oral">口頭自答（先背後揭曉）</option></select></div><div><label>題目順序</label><select id="order"><option value="shuffle">隨機打亂</option><option value="normal">原題號順序</option></select></div><div><label>練習題數</label><select id="count"><option value="all">全部</option><option value="10">10題</option><option value="20">20題</option><option value="30">30題</option></select></div></div><div class="row" style="margin-top:15px"><button class="primary" id="start">開始新練習</button><button id="wrong">練習此範圍錯題</button><button id="allwrong">全題庫錯題</button></div></div>
+<div class="panel"><div class="row" style="justify-content:space-between"><span id="progress" class="pill">準備開始</span><span id="score" class="stat">已答 0｜答對 0</span></div><div id="qnum" class="muted" style="margin-top:14px"></div><div id="question" class="question">請選擇單元與模式，按「開始新練習」。</div><div id="options"></div><div class="row"><button class="primary" id="submit" disabled>確認作答</button><button id="reveal" disabled>顯示答案</button><button id="prev" disabled>上一題</button><button id="next" disabled>下一題</button></div><div id="feedback" class="answer hidden"></div></div>
+<div class="panel"><b>錯題與備份</b><p class="muted">本機自動儲存各題答對、答錯次數；分享題庫檔案不會分享你的作答紀錄。不同手機、平板間可用備份檔匯入進度。</p><div id="stats" class="stat"></div><div class="row" style="margin-top:12px"><button id="export">匯出進度備份</button><button id="import">匯入進度備份</button><input id="upload" type="file" accept="application/json" class="hidden"><button id="reset">清除本機統計</button></div></div><footer>題目取自《生理題庫(1).pdf》；答案說明依《生理期中考題11.pdf》保留原有措辭。A–D選項為練習用途新增，非老師原題選項。第14題缺原始選項、第48題答案檔未找到答案，僅提供口頭自答及待核對標記。題號與單元以答案檔分類；個別頁碼與內容可能需再核對老師PPT。</footer></div>
+<script>const BANK=[
+  {
+    "id": 1,
+    "q": "位於中腦的黑質紋狀體多巴胺系統發生神經元退化，最主要與哪一種神經退化性疾病的運動障礙有關？",
+    "unit": "7",
+    "answer": "帕金森氏症。",
+    "source": "第8單元 P34",
+    "options": [
+      "帕金森氏症",
+      "阿茲海默氏症",
+      "亨丁頓舞蹈症",
+      "多發性硬化症"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 2,
+    "q": "單胺類神經傳遞物質（如多巴胺、血清素）在突觸間隙中作用後，其訊息傳遞通常如何被終止？",
+    "unit": "7",
+    "answer": "1 再吸收（Reuptake）2.單胺氧化酶分解",
+    "source": "第7單元 P77",
+    "options": [
+      "再吸收與單胺氧化酶分解",
+      "只靠神經元放電停止",
+      "只靠細胞核分解",
+      "只靠血液稀釋"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 3,
+    "q": "菸鹼性乙醯膽鹼受器與毒蕈鹼性乙醯膽鹼受器在訊息傳遞機制上的主要差異為何？",
+    "unit": "7",
+    "answer": "菸鹼性乙醯膽鹼受器是離子通道型受器；蕈毒鹼性乙醯膽鹼受器是 G 蛋白偶聯型受器(GPCR)",
+    "source": "第7單元 P63、64",
+    "options": [
+      "菸鹼性是離子通道；毒蕈鹼性是GPCR",
+      "兩者都是電位閘控鈉通道",
+      "兩者都只能透過細胞核",
+      "菸鹼性是GPCR；毒蕈鹼性是離子通道"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 4,
+    "q": "關於興奮性突觸後電位（EPSP）與動作電位（Action Potential）的比較，下列何者正確？",
+    "unit": "7",
+    "answer": "動作電位：軸突、全或無、有閾值與不反應期；EPSP：樹突與細胞本體、分級可加成、無不反應期。",
+    "source": "第7單元 P69",
+    "options": [
+      "EPSP可加成，動作電位全或無",
+      "EPSP有絕對不反應期",
+      "動作電位大小可任意加成",
+      "EPSP只能在軸突末端產生"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 5,
+    "q": "一氧化氮（NO）作為神經傳遞物質的特性，下列何者描述最準確？",
+    "unit": "7",
+    "answer": "特性：可自由擴散穿過細胞膜，不需囊泡儲存",
+    "source": "第7單元 P95",
+    "options": [
+      "可自由擴散穿過細胞膜，不需囊泡儲存",
+      "必須儲存在突觸囊泡",
+      "只能透過離子通道移動",
+      "不能穿過細胞膜"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 6,
+    "q": "內生性大麻素（Endocannabinoids）在突觸生理中主要扮演何種角色？",
+    "unit": "7",
+    "answer": "1.協助學習、記憶過程中的突觸調控；2.參與痛覺、情緒、食慾調節",
+    "source": "第7單元 P94",
+    "options": [
+      "參與突觸調控及痛覺、情緒、食慾",
+      "只負責肌肉收縮",
+      "只負責血液凝固",
+      "只負責骨骼鈣化"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 7,
+    "q": "在長期增益（LTP）過程中，哪一種離子通過 NMDA 受器後啟動突觸強化的分子級聯反應？",
+    "unit": "7",
+    "answer": "鈣離子通道",
+    "source": "第7單元 P106",
+    "options": [
+      "鈣離子 Ca²⁺",
+      "鈉離子 Na⁺",
+      "氯離子 Cl⁻",
+      "鉀離子 K⁺"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 8,
+    "q": "中樞神經系統中的抑制性神經傳遞物質 GABA 與甘胺酸（glycine），其共同的作用機制為何？",
+    "unit": "7",
+    "answer": "開啟 Cl⁻ 通道 → 過極化 → 抑制突觸後神經元。",
+    "source": "第7單元 P89",
+    "options": [
+      "開啟 Cl⁻ 通道造成過極化",
+      "開啟 Na⁺ 通道造成去極化",
+      "關閉所有鉀離子通道",
+      "增加細胞內葡萄糖"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 9,
+    "q": "造成動作電位「絕對不反應期」的主要分子機制為何？",
+    "unit": "7",
+    "answer": "動作電位進行中，Na⁺ 通道失活 → 再強刺激也無效。",
+    "source": "第7單元 P36",
+    "options": [
+      "Na⁺ 通道失活",
+      "Cl⁻ 通道永久打開",
+      "鈣離子全部排出",
+      "受器數量瞬間增加"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 10,
+    "q": "中樞神經系統中，哪種神經膠細胞負責吸收突觸裂隙中多餘的 K⁺？",
+    "unit": "7",
+    "answer": "星狀細胞（Astrocytes）",
+    "source": "第7單元 P22",
+    "options": [
+      "星狀細胞",
+      "小膠細胞",
+      "許旺氏細胞",
+      "少突膠細胞"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 11,
+    "q": "控制骨骼肌精細動作的皮質脊髓徑主要在哪個位置交叉至對側？",
+    "unit": "8",
+    "answer": "延髓錐體",
+    "source": "第8單元 P94",
+    "options": [
+      "延髓錐體",
+      "小腦皮質",
+      "視丘",
+      "海馬迴"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 12,
+    "q": "哪種神經傳遞物質的作用是抑制網狀活化系統（RAS），從而促進睡眠？",
+    "unit": "8",
+    "answer": "釋放 GABA",
+    "source": "第8單元 P85",
+    "options": [
+      "GABA",
+      "多巴胺",
+      "麩胺酸",
+      "腎上腺素"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 13,
+    "q": "車禍後走路搖晃、指物時手臂來回震顫，最可能是哪個腦區損傷？",
+    "unit": "8",
+    "answer": "小腦",
+    "source": "第8單元 P82",
+    "options": [
+      "小腦",
+      "海馬迴",
+      "下視丘",
+      "視丘"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 14,
+    "q": "下視丘在維持身體恆定中扮演多重角色，但不包含下列哪一項功能？",
+    "unit": "8",
+    "answer": "下視丘包括：基本行為（飢餓、口渴、體溫調節）；內分泌調控；情緒與行為；自主神經系統調節。原題缺少選項，無法判斷「不包含」哪項。",
+    "source": "第8單元 P69",
+    "options": null,
+    "correct": null
+  },
+  {
+    "id": 15,
+    "q": "將短期記憶鞏固成長期陳述性記憶，主要依賴哪個腦部構造？",
+    "unit": "8",
+    "answer": "海馬迴",
+    "source": "第8單元 P46",
+    "options": [
+      "海馬迴",
+      "延髓",
+      "脊髓前角",
+      "松果腺"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 16,
+    "q": "脊神經的背根（dorsal root）與腹根（ventral root）功能有何分工？",
+    "unit": "8",
+    "answer": "背根 (dorsal root) → 感覺纖維，含背根神經節（感覺神經元細胞本體）；腹根 (ventral root) → 運動纖維，細胞本體在脊髓灰質內",
+    "source": "第8單元 P105",
+    "options": [
+      "背根感覺傳入，腹根運動傳出",
+      "背根運動傳出，腹根感覺傳入",
+      "兩者皆僅感覺傳入",
+      "兩者皆僅運動傳出"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 17,
+    "q": "延髓中的「生命中樞」主要調節哪些功能？",
+    "unit": "8",
+    "answer": "1.心臟控制中樞：控制心跳。2.呼吸中樞：調節呼吸。3.血管運動中樞：控制血壓。",
+    "source": "第8單元 P83",
+    "options": [
+      "心跳、呼吸、血壓",
+      "視覺、聽覺、嗅覺",
+      "語言、計算、閱讀",
+      "記憶、情緒、睡眠"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 18,
+    "q": "哪種感覺資訊不經過視丘轉運？",
+    "unit": "8",
+    "answer": "嗅覺。嗅覺是例外。",
+    "source": "第8單元 P67",
+    "options": [
+      "嗅覺",
+      "視覺",
+      "聽覺",
+      "觸覺"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 19,
+    "q": "阿茲海默氏症細胞內的神經纖維糾結（tangles）主要由哪種蛋白質異常引起？",
+    "unit": "8",
+    "answer": "Tau 蛋白（濤蛋白）異常",
+    "source": "第8單元 P50",
+    "options": [
+      "Tau 蛋白",
+      "血紅素",
+      "膠原蛋白",
+      "肌動蛋白"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 20,
+    "q": "魏尼克氏失語症與布洛卡氏失語症最顯著的臨床區別為何？",
+    "unit": "8",
+    "answer": "說話緩慢困難 → 布洛卡氏區受損；說話流暢卻無意義 → 魏尼克氏區受損",
+    "source": "第8單元 P40",
+    "options": [
+      "布洛卡說話困難；魏尼克說話流暢但無意義",
+      "兩者都完全無法發聲",
+      "布洛卡只影響視覺",
+      "魏尼克只影響聽力"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 21,
+    "q": "關於 REM 睡眠與非 REM 睡眠的特徵，下列何者正確？",
+    "unit": "8",
+    "answer": "REM（快速動眼期）：眼球快速移動、容易做夢、腦波類似清醒狀態，心跳與呼吸較不規則。非 REM（非快速動眼期）：深睡期出現慢波（δ 波），心跳與呼吸較規律。",
+    "source": "第8單元 P30",
+    "options": [
+      "REM 容易做夢且心跳呼吸較不規則",
+      "REM 完全沒有眼球運動",
+      "非 REM 全程腦波與清醒相同",
+      "非 REM 心跳呼吸一定更不規則"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 22,
+    "q": "哪個腦部區域負責在恐懼或憤怒時誘發內臟自主神經反應（冒冷汗、心跳加快）？",
+    "unit": "8",
+    "answer": "下視丘。",
+    "source": "第8單元 P69",
+    "options": [
+      "下視丘",
+      "小腦",
+      "枕葉",
+      "延髓錐體"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 23,
+    "q": "阿托品（atropine）可以治療心搏過緩（bradycardia），其原理為何？",
+    "unit": "9",
+    "answer": "阿托品阻斷心臟的毒蕈鹼性乙醯膽鹼受器（Muscarinic ACh receptor），減少副交感神經對心臟的抑制作用，使心跳加快。",
+    "source": "第9單元 P答案檔標 P64（屬第7單元）",
+    "options": [
+      "阻斷心臟毒蕈鹼性受器，減少副交感抑制",
+      "活化心臟毒蕈鹼性受器",
+      "阻斷所有鈉通道",
+      "促進副交感使心跳更慢"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 24,
+    "q": "所有 β 腎上腺素性受器（β1、β2、β3）主要透過哪種第二傳訊者發揮作用？",
+    "unit": "11",
+    "answer": "cAMP（環腺苷酸）",
+    "source": "第11單元 P27",
+    "options": [
+      "cAMP",
+      "cGMP",
+      "IP₃",
+      "DAG"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 25,
+    "q": "兒茶酚胺（catecholamine）的化學合成路徑，何者排序正確？",
+    "unit": "7",
+    "answer": "酪胺酸 → L-DOPA → 多巴胺（Dopamine）→ 正腎上腺素 → 腎上腺素",
+    "source": "第7單元 P75",
+    "options": [
+      "酪胺酸→L-DOPA→多巴胺→正腎上腺素→腎上腺素",
+      "多巴胺→酪胺酸→腎上腺素→L-DOPA",
+      "腎上腺素→多巴胺→酪胺酸→L-DOPA",
+      "L-DOPA→腎上腺素→酪胺酸→多巴胺"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 26,
+    "q": "為何腎上腺髓質常與交感神經系統合稱「交感神經腎上腺系統」？",
+    "unit": "9",
+    "answer": "因為腎上腺髓質相當於特化的交感神經節，直接接受交感節前神經纖維支配，並分泌腎上腺素及去甲腎上腺素，增強「戰或逃」反應。",
+    "source": "第9單元 P21",
+    "options": [
+      "腎上腺髓質是特化交感神經節並分泌兒茶酚胺",
+      "腎上腺髓質只受副交感支配",
+      "腎上腺髓質不受神經控制",
+      "腎上腺髓質只分泌胰島素"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 27,
+    "q": "哪一種器官或組織不具備雙重神經支配，僅受交感神經調節？",
+    "unit": "9",
+    "answer": "汗腺",
+    "source": "第9單元 P30",
+    "options": [
+      "汗腺",
+      "心臟",
+      "唾液腺",
+      "胃"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 28,
+    "q": "內臟器官失去自主神經支配時，「去神經過敏性」是指什麼現象？",
+    "unit": "9",
+    "answer": "失去神經支配後，標的器官對刺激或神經傳導物質的敏感性增加。",
+    "source": "第9單元 P7",
+    "options": [
+      "失去神經支配後對刺激更敏感",
+      "失去神經支配後完全不再反應",
+      "受器全部消失",
+      "對所有刺激都變得不敏感"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 29,
+    "q": "乙醯膽鹼與菸鹼性受器結合時總是產生 EPSP，其原因為何？",
+    "unit": "7",
+    "answer": "ACh 與菸鹼性受器結合，使配體閘控通道打開，Na⁺進入量大於 K⁺流出量，造成去極化，產生 EPSP。",
+    "source": "第7單元 P62",
+    "options": [
+      "Na⁺進入大於K⁺流出，造成去極化",
+      "只讓Cl⁻流入造成過極化",
+      "直接關閉所有離子通道",
+      "只靠細胞核產生EPSP"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 30,
+    "q": "自主神經系統調節唾液腺分泌時，交感與副交感神經呈現何種關係？",
+    "unit": "9",
+    "answer": "互補作用",
+    "source": "第9單元 P41",
+    "options": [
+      "互補作用",
+      "完全拮抗作用",
+      "完全沒有關係",
+      "兩者都不影響唾液腺"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 31,
+    "q": "交感節前與節後神經元的突觸主要釋放哪種神經傳遞物質，作用於哪種受器？",
+    "unit": "9",
+    "answer": "乙醯膽鹼（ACh），作用於菸鹼型受器（Nicotinic receptor，N 型）",
+    "source": "第9單元 P34",
+    "options": [
+      "乙醯膽鹼作用於菸鹼型受器",
+      "去甲腎上腺素作用於β₂",
+      "多巴胺作用於D₂",
+      "GABA作用於GABA-A"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 32,
+    "q": "看清楚近距離物體時，眼睛進行調適作用會發生哪項生理變化？",
+    "unit": "10",
+    "answer": "睫狀肌收縮、懸韌帶鬆弛、水晶體變厚（曲度增加）",
+    "source": "第10單元 P86、88",
+    "options": [
+      "睫狀肌收縮、懸韌帶鬆弛、水晶體變厚",
+      "睫狀肌鬆弛、水晶體變薄",
+      "懸韌帶拉緊、水晶體變薄",
+      "瞳孔變大且水晶體完全不變"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 33,
+    "q": "側邊抑制（lateral inhibition）的主要功能是什麼？",
+    "unit": "10",
+    "answer": "抑制鄰近神經元的活動，增強刺激位置的對比，增強邊際清晰度，提高觸覺、視覺、聽覺及嗅覺解析度。",
+    "source": "第10單元 P28",
+    "options": [
+      "抑制鄰近神經元，增加邊界對比",
+      "促進鄰近神經元全部同時放電",
+      "使刺激邊界變模糊",
+      "只調節心跳"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 34,
+    "q": "耳硬化症導致鐙骨固定，會造成哪種類型的聽力喪失？",
+    "unit": "10",
+    "answer": "傳導性耳聾",
+    "source": "第10單元 P75",
+    "options": [
+      "傳導性耳聾",
+      "感音神經性耳聾",
+      "中樞性失語症",
+      "視覺障礙"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 35,
+    "q": "相位受器與張力受器面對持續不變刺激時的主要區別是什麼？",
+    "unit": "10",
+    "answer": "相位受器快速適應，張力受器緩慢適應",
+    "source": "第10單元 P8",
+    "options": [
+      "相位快速適應，張力緩慢適應",
+      "相位緩慢適應，張力快速適應",
+      "兩者都不會適應",
+      "兩者只對光線反應"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 36,
+    "q": "根據專一性神經能量定律，為何揉眼睛會感覺到閃光？",
+    "unit": "10",
+    "answer": "因為壓力刺激視覺傳導路徑，大腦仍將訊號解讀為光的感覺。",
+    "source": "第10單元 P10",
+    "options": [
+      "壓力刺激視覺路徑，大腦仍解讀成光",
+      "壓力直接產生真正光子",
+      "壓力刺激味覺受器",
+      "因為眼睛會分泌褪黑激素"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 37,
+    "q": "梅尼爾氏症產生眩暈與耳鳴的可能病理生理機制為何？",
+    "unit": "10",
+    "answer": "內耳內淋巴液過多（內淋巴積水），造成前庭及聽覺功能異常",
+    "source": "第10單元 P57",
+    "options": [
+      "內淋巴液過多造成前庭與聽覺異常",
+      "外耳道耳垢過少",
+      "視網膜感光細胞受損",
+      "中耳聽小骨完全缺失"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 38,
+    "q": "視覺高階皮質中的「簡單神經元」對哪種刺激最敏感？",
+    "unit": "10",
+    "answer": "對特定方向的條狀光線最敏感",
+    "source": "第10單元 P124",
+    "options": [
+      "特定方向的條狀光線",
+      "血液中的葡萄糖",
+      "不同氣味分子",
+      "心肌伸展"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 39,
+    "q": "人體經歷水平方向直線加速度（汽車突然向前衝）時，哪個前庭構造主要感測？",
+    "unit": "10",
+    "answer": "橢圓囊：感受水平方向的直線加速度，例如汽車突然向前衝。球囊：感受垂直方向的直線加速度，例如電梯上下移動。半規管：感受旋轉加速度。",
+    "source": "第10單元 P49",
+    "options": [
+      "橢圓囊",
+      "球囊",
+      "半規管",
+      "耳蝸"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 40,
+    "q": "哪組味覺皆與 G 蛋白偶合受器及第二傳訊者系統相關？",
+    "unit": "10",
+    "answer": "甜味、苦味、鮮味（Umami）",
+    "source": "第10單元 P35",
+    "options": [
+      "甜味、苦味、鮮味",
+      "鹹味、酸味、觸覺",
+      "酸味、鹹味、溫覺",
+      "甜味、鹹味、酸味"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 41,
+    "q": "類固醇激素典型基因體作用（genomic action）的正確步驟順序為何？",
+    "unit": "11",
+    "answer": "類固醇激素進入細胞 → 結合細胞內受器 → 激素與受器複合體結合 DNA 的激素反應元件（HRE）→ 啟動基因轉錄 → 合成蛋白質",
+    "source": "第11單元 P18",
+    "options": [
+      "進入細胞→結合細胞內受器→結合HRE→轉錄→合成蛋白質",
+      "先合成蛋白質→再進入細胞",
+      "先結合細胞膜鈉通道→直接產生動作電位",
+      "只經由突觸囊泡釋放"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 42,
+    "q": "松果腺褪黑激素分泌主要受到何種環境因素調節？",
+    "unit": "11",
+    "answer": "光線",
+    "source": "第11單元 P87",
+    "options": [
+      "光線",
+      "聲音",
+      "氣壓",
+      "食物鹽分"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 43,
+    "q": "阿斯匹靈等 NSAIDs 緩解發炎與疼痛的主要作用機制為何？",
+    "unit": "11",
+    "answer": "抑制環氧化酶（COX），減少前列腺素合成。",
+    "source": "第11單元 P103",
+    "options": [
+      "抑制COX，減少前列腺素合成",
+      "活化COX，增加前列腺素",
+      "增加組織胺合成",
+      "促進胰島素分泌"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 44,
+    "q": "葛瑞夫茲氏病與碘缺乏性甲狀腺腫的根本病因與生理狀態有何不同？",
+    "unit": "11",
+    "answer": "缺碘 → T3/T4 下降 → TSH 上升 → 甲狀腺腫大。自體抗體刺激 TSH 受器 → T3/T4 上升 → TSH 下降",
+    "source": "第11單元 P73、76",
+    "options": [
+      "缺碘使T3/T4下降TSH上升；Graves抗體刺激TSH受器使T3/T4上升",
+      "兩者都是胰島素不足",
+      "兩者都使T3/T4必然下降",
+      "兩者都因鈣離子不足"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 45,
+    "q": "庫欣氏症候群的水牛肩、滿月臉主要是哪類腎上腺皮質激素長期過量？",
+    "unit": "11",
+    "answer": "糖皮質素（Glucocorticoids）過多",
+    "source": "第11單元 P62",
+    "options": [
+      "糖皮質素",
+      "礦物皮質素",
+      "褪黑激素",
+      "胰島素"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 46,
+    "q": "下視丘對腦垂腺前葉與後葉的控制有何根本不同？",
+    "unit": "11",
+    "answer": "腦垂腺前葉，透過下視丘－腦垂腺門脈系統，以釋放或抑制激素調控。腦垂腺後葉，下視丘製造激素，經神經軸突運送至後葉儲存及釋放。",
+    "source": "第11單元 P48、46",
+    "options": [
+      "前葉經門脈激素調控；後葉經軸突運送激素",
+      "前後葉都只靠門脈",
+      "前後葉都只靠神經軸突",
+      "前葉只分泌胰島素"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 47,
+    "q": "餐後血糖上升，胰島 β 細胞分泌哪種激素促進葡萄糖吸收與儲存？",
+    "unit": "11",
+    "answer": "胰臟（Insulin）",
+    "source": "第11單元 P84",
+    "options": [
+      "胰島素（Insulin）",
+      "升糖素",
+      "褪黑激素",
+      "皮質醇"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 48,
+    "q": "兒茶酚胺激素作用於 α 腎上腺性受體的第二傳訊者路徑，何者排序正確？",
+    "unit": "11",
+    "answer": "答案檔標示「未找到」，尚待核對。",
+    "source": "待核對",
+    "options": null,
+    "correct": null
+  },
+  {
+    "id": 49,
+    "q": "副甲狀腺素（PTH）與維生素 D3 的關係何者正確？",
+    "unit": "11",
+    "answer": "PTH 促進維生素 D 活化，再由活性維生素 D 增加腸道鈣吸收。",
+    "source": "第11單元 P79",
+    "options": [
+      "PTH促進維生素D活化，增加腸道鈣吸收",
+      "PTH阻止維生素D活化",
+      "維生素D完全不影響鈣吸收",
+      "PTH只調節血糖"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 50,
+    "q": "磷脂酶 C（PLC）系統中，IP₃ 的直接功能為何？",
+    "unit": "11",
+    "answer": "IP₃促使內質網釋放 Ca²⁺，增加細胞質內的鈣離子濃度。",
+    "source": "第11單元 P31、32",
+    "options": [
+      "促使內質網釋放Ca²⁺",
+      "直接分解DNA",
+      "關閉所有鈣離子通道",
+      "促使細胞排出所有ATP"
+    ],
+    "correct": 0
+  }
+];const $=id=>document.getElementById(id);let session=[],index=0,selected=null,shown=false,results={};let history={};try{history=JSON.parse(localStorage.getItem('physiology_v1')||'{}')}catch{};const save=()=>{try{localStorage.setItem('physiology_v1',JSON.stringify(history))}catch{}};function shuffled(a){a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}function start(wrong='none'){let u=$('unit').value;let pool=BANK.filter(x=>u==='all'||x.unit===u);if(wrong==='all')pool=BANK.filter(x=>(history[x.id]?.wrong||0)>0);else if(wrong==='unit')pool=pool.filter(x=>(history[x.id]?.wrong||0)>0);if($('mode').value==='mc')pool=pool.filter(x=>x.options);if(!pool.length){alert('此範圍目前沒有可練習的題目／錯題。');return}if($('order').value==='shuffle')pool=shuffled(pool);let n=$('count').value;if(n!=='all')pool=pool.slice(0,+n);session=pool.map(x=>({...x,choices:x.options?($('order').value==='shuffle'?shuffled(x.options.map((v,i)=>({v,ok:i===x.correct}))):x.options.map((v,i)=>({v,ok:i===x.correct}))):null}));index=0;results={};render()}function render(){if(!session.length)return;let q=session[index];selected=null;shown=!!results[q.id]?.shown;$('qnum').textContent=`原題第 ${q.id} 題｜第 ${q.unit} 單元`;$('progress').textContent=`第 ${index+1} / ${session.length} 題`;$('question').textContent=q.q;$('options').innerHTML='';let mc=$('mode').value==='mc';if(mc&&q.choices){q.choices.forEach((c,i)=>{let b=document.createElement('button');b.className='opt';b.textContent='ABCD'[i]+'. '+c.v;b.onclick=()=>{if(shown)return;selected=i;document.querySelectorAll('.opt').forEach(e=>e.classList.remove('chosen'));b.classList.add('chosen');$('submit').disabled=false};$('options').append(b)})}else $('options').innerHTML='<p class="muted">先在心裡或口頭回答，再按「顯示答案」。</p>';$('submit').classList.toggle('hidden',!mc);$('reveal').classList.toggle('hidden',mc);$('submit').disabled=true;$('reveal').disabled=false;$('prev').disabled=index===0;$('next').disabled=index===session.length-1;$('feedback').classList.toggle('hidden',!shown);if(shown)showFeedback(q,results[q.id]?.chosen);else $('feedback').textContent='';updateStats()}function showFeedback(q,choice){let correct=q.choices?.find(x=>x.ok);let mc=$('mode').value==='mc';let status=mc&&choice!=null?(q.choices[choice]?.ok?'✓ 答對了':'✕ 答錯了'):'已顯示答案';$('feedback').textContent=status+'\n\n【原答案／解釋】\n'+q.answer+'\n\n【PPT 頁碼】\n'+q.source+(mc?'\n\n【選擇題正確選項】\n'+(correct?.v||'待核對'):'');document.querySelectorAll('.opt').forEach((b,i)=>{b.disabled=true;b.classList.toggle('good',q.choices[i].ok);b.classList.toggle('bad',i===choice&&!q.choices[i].ok)})}$('submit').onclick=()=>{let q=session[index];if(selected==null||shown)return;let good=q.choices[selected].ok;results[q.id]={shown:true,chosen:selected,good};history[q.id]??={right:0,wrong:0};history[q.id][good?'right':'wrong']++;save();shown=true;render()};$('reveal').onclick=()=>{let q=session[index];results[q.id]={shown:true};shown=true;render()};$('next').onclick=()=>{if(index<session.length-1){index++;render()}};$('prev').onclick=()=>{if(index>0){index--;render()}};$('start').onclick=()=>start();$('wrong').onclick=()=>start('unit');$('allwrong').onclick=()=>start('all');function updateStats(){let n=Object.values(results).filter(x=>x.good!==undefined),good=n.filter(x=>x.good).length;$('score').textContent=`已答 ${n.length}｜答對 ${good}`;let top=Object.entries(history).filter(([k,v])=>v.wrong>0).sort((a,b)=>b[1].wrong-a[1].wrong).slice(0,8);$('stats').textContent='常錯題：'+(top.length?top.map(([k,v])=>`第${k}題（錯${v.wrong}次）`).join('、'):'目前沒有錯題紀錄')}$('export').onclick=()=>{let blob=new Blob([JSON.stringify({version:1,history,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='生理學題庫_進度備份.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};$('import').onclick=()=>$('upload').click();$('upload').onchange=async e=>{let f=e.target.files[0];if(!f)return;try{let d=JSON.parse(await f.text());if(!d.history||typeof d.history!=='object')throw Error();history=d.history;save();updateStats();alert('進度已匯入')}catch{alert('備份檔格式不正確')}e.target.value=''};$('reset').onclick=()=>{if(confirm('確定清除這台裝置上的答題統計？')){history={};save();updateStats()}};updateStats();
+</script></body></html>
